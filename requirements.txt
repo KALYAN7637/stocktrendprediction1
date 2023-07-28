@@ -10,4 +10,3 @@ plotly-express
 keras.models
 matplotlib
 streamlit
-ta-lib
