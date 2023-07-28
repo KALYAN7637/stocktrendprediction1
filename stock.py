@@ -352,23 +352,64 @@ st.plotly_chart(fig)
 
 
 st.subheader('EMA VS CLOSING PRICE')
-ema_period_50 = 50  
+#ema_period_50 = 50  
+#ema_period_100 = 100
+#ema_period_200 = 200
+#close_prices = df['Close'].values
+#ema_50 = ta.EMA(close_prices, timeperiod=ema_period_50)
+#ema_100 = ta.EMA(close_prices, timeperiod=ema_period_100)
+#ema_200 = ta.EMA(close_prices, timeperiod=ema_period_200)
+#df['EMA_50'] = ema_50  
+#df['EMA_100'] = ema_100
+#df['EMA_200'] = ema_200
+#fig = px.line(df, x=df.index, y=['Close', 'EMA_50', 'EMA_100','EMA_200'], title='EMA and Closing Price')
+#fig.update_traces(line=dict(color='red'), selector=dict(name='EMA_50'))
+#fig.update_traces(line=dict(color='pink'), selector=dict(name='EMA_100'))
+#fig.update_traces(line=dict(color='green'), selector=dict(name='EMA_200'))
+#fig.update_layout(xaxis_title='Date', yaxis_title='Price')
+#fig.layout.update(title_text='Time Series Data',xaxis_rangeslider_visible=True,height=500)
+#st.plotly_chart(fig)
+
+
+
+
+# Function to calculate EMA
+def exponential_moving_average(prices, period):
+    alpha = 2 / (period + 1)
+    ema = [prices[0]]
+    for i in range(1, len(prices)):
+        ema.append((prices[i] - ema[-1]) * alpha + ema[-1])
+    return ema
+
+
+
+# Calculate EMA with periods of 50, 100, and 200
+ema_period_50 = 50
 ema_period_100 = 100
 ema_period_200 = 200
-close_prices = df['Close'].values
-ema_50 = ta.EMA(close_prices, timeperiod=ema_period_50)
-ema_100 = ta.EMA(close_prices, timeperiod=ema_period_100)
-ema_200 = ta.EMA(close_prices, timeperiod=ema_period_200)
-df['EMA_50'] = ema_50  
-df['EMA_100'] = ema_100
-df['EMA_200'] = ema_200
-fig = px.line(df, x=df.index, y=['Close', 'EMA_50', 'EMA_100','EMA_200'], title='EMA and Closing Price')
+
+df['EMA_50'] = exponential_moving_average(df['Close'], ema_period_50)
+df['EMA_100'] = exponential_moving_average(df['Close'], ema_period_100)
+df['EMA_200'] = exponential_moving_average(df['Close'], ema_period_200)
+
+# Create Plotly Express graph
+fig = px.line(df, x=df.index, y=['Close', 'EMA_50', 'EMA_100', 'EMA_200'],
+              labels={'value': 'Price', 'variable': 'Indicator', 'index': 'Date'},
+              title='Exponential Moving Averages (EMA) and Closing Price',
+              line_shape='linear', render_mode='svg')
+
+# Update the line colors
+fig.update_traces(line=dict(color='blue'), selector=dict(name='Close'))
 fig.update_traces(line=dict(color='red'), selector=dict(name='EMA_50'))
 fig.update_traces(line=dict(color='pink'), selector=dict(name='EMA_100'))
 fig.update_traces(line=dict(color='green'), selector=dict(name='EMA_200'))
-fig.update_layout(xaxis_title='Date', yaxis_title='Price')
-fig.layout.update(title_text='Time Series Data',xaxis_rangeslider_visible=True,height=500)
+
+# Update the layout
+fig.update_layout(xaxis_title='Date', yaxis_title='Price', xaxis_rangeslider_visible=True, height=500)
+
+# Show the plot using Streamlit
 st.plotly_chart(fig)
+
 
 
 
