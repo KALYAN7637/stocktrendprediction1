@@ -8,7 +8,7 @@ import yfinance as yf
 from pandas_datareader import data as pdr
 import plotly_express as px
 import sklearn as sk
-import talib as ta
+#import talib as ta
 import stocknews as st
 import streamlit as st
 import  datetime as dt
