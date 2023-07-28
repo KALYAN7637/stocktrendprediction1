@@ -22,13 +22,13 @@ import yfinance as yf
 from sklearn.preprocessing import MinMaxScaler
 from keras.models import load_model
 import streamlit as st
-import talib as ta
+#import talib as ta
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import  datetime as dt
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
-from prophet import Prophet
+
 from plotly import graph_objs as go
 
 
