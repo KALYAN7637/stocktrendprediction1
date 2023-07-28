@@ -106,7 +106,7 @@ for i in range(100, data_training_scaled.shape[0]):
 x_train, y_train = np.array(x_train), np.array(y_train)
 
 # Load the trained model
-model = load_model(r'C:\Users\KALYAN\Desktop\all projects\experiments\keras_model.h5')
+model = load_model(r'keras_model.h5')
 
 
 
