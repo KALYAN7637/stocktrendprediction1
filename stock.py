@@ -13,7 +13,7 @@ import stocknews as st
 import streamlit as st
 import  datetime as dt
 import backtesting
-from talib import SMA,EMA
+#from talib import SMA,EMA
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import tensorflow as tf
