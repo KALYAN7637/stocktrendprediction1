@@ -313,13 +313,13 @@ else:
 
 
 
-st.subheader('WMA VS CLOSING PRICE')
 
+
+
+st.subheader('WMA VS CLOSING PRICE')
 # Function to calculate WMA
 def weighted_moving_average(prices, weights):
     return sum(prices * weights) / sum(weights)
-
-
 
 
 # Calculate WMA with a time period of 13
@@ -342,6 +342,9 @@ fig.update_layout(xaxis_rangeslider_visible=True, height=500)
 
 # Show the plot using Streamlit
 st.plotly_chart(fig)
+
+
+
 
 
 
