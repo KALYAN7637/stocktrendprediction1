@@ -301,16 +301,59 @@ else:
 
 
 
-st.subheader('WMA VS CLOSING PRICE')
-wma_period_13 = 13 
-close_prices = df['Close'].values
-wma_13 = ta.WMA(close_prices, timeperiod=wma_period_13)
-df['WMA_13'] = wma_13
-fig = px.line(df, x=df.index, y=['Close', 'WMA_13'], title='WMA and Closing Price')  # Include 'WMA_13' in y
-fig.update_traces(line=dict(color='red'), selector=dict(name='WMA_13'))  # Use 'WMA_13' as the selector
-fig.update_layout(xaxis_title='Date', yaxis_title='Price', title_text='Time Series Data',
+#st.subheader('WMA VS CLOSING PRICE')
+#wma_period_13 = 13 
+#close_prices = df['Close'].values
+#wma_13 = ta.WMA(close_prices, timeperiod=wma_period_13)
+#df['WMA_13'] = wma_13
+#fig = px.line(df, x=df.index, y=['Close', 'WMA_13'], title='WMA and Closing Price')  # Include 'WMA_13' in y
+#fig.update_traces(line=dict(color='red'), selector=dict(name='WMA_13'))  # Use 'WMA_13' as the selector
+#fig.update_layout(xaxis_title='Date', yaxis_title='Price', title_text='Time Series Data',
                   xaxis_rangeslider_visible=True,height=500)
+#st.plotly_chart(fig)
+
+
+import yfinance as yf
+import pandas as pd
+import streamlit as st
+import plotly.graph_objects as go
+
+# Function to calculate WMA
+def weighted_moving_average(prices, weights):
+    return sum(prices * weights) / sum(weights)
+
+# Replace 'AAPL' with the ticker symbol of the stock you want to retrieve data for
+ticker = 'AAPL'
+
+# Replace '2023-07-01' and '2023-07-28' with your desired start and end dates
+start_date = '2023-07-01'
+end_date = '2023-07-28'
+
+# Get historical data from Yahoo Finance
+data = yf.download(ticker, start=start_date, end=end_date)
+
+# Calculate WMA with a time period of 13
+wma_period_13 = 13
+weights_13 = list(range(1, wma_period_13 + 1))
+data['WMA_13'] = data['Close'].rolling(window=wma_period_13).apply(lambda prices: weighted_moving_average(prices, weights_13))
+
+# Create a plotly figure
+fig = go.Figure()
+
+# Add Closing Price to the figure
+fig.add_trace(go.Scatter(x=data.index, y=data['Close'], name='Closing Price', line=dict(color='blue')))
+
+# Add WMA_13 to the figure
+fig.add_trace(go.Scatter(x=data.index, y=data['WMA_13'], name='WMA (13)', line=dict(color='red')))
+
+# Update the layout
+fig.update_layout(xaxis_title='Date', yaxis_title='Price', title='WMA and Closing Price',
+                  xaxis_rangeslider_visible=True, height=500)
+
+# Show the plot using Streamlit
 st.plotly_chart(fig)
+
+
 
 
 
