@@ -1,7 +1,6 @@
 pandas
 numpy
 pandas-datareader
-
 yfinance
 keras
 scikit-learn
@@ -10,3 +9,4 @@ plotly-express
 keras.models
 matplotlib
 streamlit
+ta-lib
