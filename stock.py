@@ -9,15 +9,12 @@ from pandas_datareader import data as pdr
 import plotly_express as px
 import sklearn as sk
 #import talib as ta
-import stocknews as st
 import streamlit as st
 import  datetime as dt
-import backtesting
 #from talib import SMA,EMA
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import tensorflow as tf
-import requests
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
