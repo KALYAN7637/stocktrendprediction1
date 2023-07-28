@@ -308,8 +308,7 @@ else:
 #df['WMA_13'] = wma_13
 #fig = px.line(df, x=df.index, y=['Close', 'WMA_13'], title='WMA and Closing Price')  # Include 'WMA_13' in y
 #fig.update_traces(line=dict(color='red'), selector=dict(name='WMA_13'))  # Use 'WMA_13' as the selector
-#fig.update_layout(xaxis_title='Date', yaxis_title='Price', title_text='Time Series Data',
-                  xaxis_rangeslider_visible=True,height=500)
+#fig.update_layout(xaxis_title='Date', yaxis_title='Price', title_text='Time Series Data',xaxis_rangeslider_visible=True,height=500)
 #st.plotly_chart(fig)
 
 
