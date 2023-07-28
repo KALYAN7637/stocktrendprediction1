@@ -416,15 +416,45 @@ st.plotly_chart(fig)
 
 
 st.subheader('50EMA VS CLOSING PRICE')
-ema_period_50 = 50  
-close_prices = df['Close'].values
-ema_50 = ta.EMA(close_prices, timeperiod=ema_period_50)
-df['EMA_50'] = ema_50  
-fig = px.line(df, x=df.index, y=['Close', 'EMA_50'], title='EMA50 and Closing Price')
+#ema_period_50 = 50  
+#close_prices = df['Close'].values
+#ema_50 = ta.EMA(close_prices, timeperiod=ema_period_50)
+#df['EMA_50'] = ema_50  
+#fig = px.line(df, x=df.index, y=['Close', 'EMA_50'], title='EMA50 and Closing Price')
+#fig.update_traces(line=dict(color='red'), selector=dict(name='EMA_50'))
+#fig.update_layout(xaxis_title='Date', yaxis_title='Price')
+#fig.layout.update(title_text='Time Series Data',xaxis_rangeslider_visible=True,height=500)
+#st.plotly_chart(fig)
+
+
+
+
+
+ema_period_50 = 50
+df['EMA_50'] = exponential_moving_average(df['Close'], ema_period_50)
+
+# Create Plotly Express graph
+fig = px.line(df, x=df.index, y=['Close', 'EMA_50'],
+              labels={'value': 'Price', 'variable': 'Indicator', 'index': 'Date'},
+              title='Exponential Moving Averages (EMA) and Closing Price',
+              line_shape='linear', render_mode='svg')
+
+# Update the line colors
+fig.update_traces(line=dict(color='blue'), selector=dict(name='Close'))
 fig.update_traces(line=dict(color='red'), selector=dict(name='EMA_50'))
-fig.update_layout(xaxis_title='Date', yaxis_title='Price')
-fig.layout.update(title_text='Time Series Data',xaxis_rangeslider_visible=True,height=500)
+
+
+# Update the layout
+fig.update_layout(xaxis_title='Date', yaxis_title='Price', xaxis_rangeslider_visible=True, height=500)
+
+# Show the plot using Streamlit
 st.plotly_chart(fig)
+
+
+
+
+
+
 
 
 
