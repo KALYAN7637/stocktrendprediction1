@@ -320,8 +320,7 @@ def weighted_moving_average(prices, weights):
     return sum(prices * weights) / sum(weights)
 
 
-# Get historical data from Yahoo Finance
-df = yf.download(ticker, start=start_date, end=end_date)
+
 
 # Calculate WMA with a time period of 13
 wma_period_13 = 13
