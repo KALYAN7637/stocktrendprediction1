@@ -313,7 +313,7 @@ else:
 
 
 
-
+st.subheader('WMA VS CLOSING PRICE')
 
 # Function to calculate WMA
 def weighted_moving_average(prices, weights):
