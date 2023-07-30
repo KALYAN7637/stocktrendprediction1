@@ -149,7 +149,6 @@ plt.xlabel('Time')
 plt.ylabel('Price')
 plt.legend()
 st.pyplot(plt2)
-plt.show()
 
 
 
