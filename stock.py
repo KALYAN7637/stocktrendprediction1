@@ -131,13 +131,31 @@ y_predicted = y_predicted * scale_factor
 y_test = y_test * scale_factor
 
 # Plot the predictions
-fig2 = plt.figure(figsize=(12,6))
-plt.plot(y_predicted, 'r', label='Predicted Price')
-plt.plot(y_test, 'b', label='Original Price')
+
+
+#fig2 = plt.figure(figsize=(12,6))
+#plt.plot(y_predicted, 'r', label='Predicted Price')
+#plt.plot(y_test, 'b', label='Original Price')
+#plt.xlabel('Time')
+#plt.ylabel('Price')
+#plt.legend()
+#st.pyplot(fig2)
+
+st.subheader('Prediction vs Original Price')
+plt2=plt.figure(figsize=(12,6))
+plt.plot(y_predicted,'r',label='Predicted Price')
+plt.plot(y_test,'b',label='Original Price')
 plt.xlabel('Time')
 plt.ylabel('Price')
 plt.legend()
-st.pyplot(fig2)
+st.pyplot(plt2)
+plt.show()
+
+
+
+
+
+
 
 
 # Get user input for the number of days to predict
