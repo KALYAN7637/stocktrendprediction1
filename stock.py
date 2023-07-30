@@ -131,9 +131,7 @@ y_predicted = y_predicted * scale_factor
 y_test = y_test * scale_factor
 
 # Plot the predictions
-
-
-#fig2 = plt.figure(figsize=(12,6))
+fig2 = plt.figure(figsize=(12,6))
 plt.plot(y_predicted, 'r', label='Predicted Price')
 plt.plot(y_test, 'b', label='Original Price')
 plt.xlabel('Time')
