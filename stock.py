@@ -1,35 +1,19 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import pandas_datareader  as data
-from keras.models import load_model
-import numpy as np
 import yfinance as yf
 from pandas_datareader import data as pdr
 import plotly_express as px
-import sklearn as sk
-#import talib as ta
 import streamlit as st
-import  datetime as dt
-#from talib import SMA,EMA
+import datetime as dt
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import tensorflow as tf
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import yfinance as yf
 from sklearn.preprocessing import MinMaxScaler
-from keras.models import load_model
-import streamlit as st
-#import talib as ta
-from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-import  datetime as dt
-from plotly.subplots import make_subplots
-import plotly.graph_objects as go
+from keras.models import load_model
 
-from plotly import graph_objs as go
+
 
 
 
